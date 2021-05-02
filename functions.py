@@ -11,7 +11,7 @@ from urllib import request
 from bs4 import BeautifulSoup
 
 # Database location
-database = "./database.db"
+database = "/db/database.db"
 
 
 # CHECKINGS
@@ -147,7 +147,7 @@ def dl_all_items(conn):
         print("-----------------------------")
 
         # Find more available options here: https://github.com/ytdl-org/youtube-dl/blob/master/youtube_dl/YoutubeDL.py#L129-L279
-        outtmpl = get_dl_location('DownloadLocation') + '/' + str(row[1]) + '/' + str(row[3]) + '/%(title)s.%(ext)s'
+        outtmpl = get_dl_location('DownloadLocation') + '/' + str(row[1]) + '/' + str(row[3]) + '/%(id)s-%(title)s.%(ext)s'
         ydl_opts_start = {
             'format': 'best',
             'playliststart:': 1,
@@ -200,7 +200,7 @@ def dl_all_new_items(conn):
         print("-----------------------------")
 
         # Find more available options here: https://github.com/ytdl-org/youtube-dl/blob/master/youtube_dl/YoutubeDL.py#L129-L279
-        outtmpl = get_dl_location('DownloadLocation') + '/' + str(row[1]) + '/' + str(row[3]) + '/%(title)s.%(ext)s'
+        outtmpl = get_dl_location('DownloadLocation') + '/' + str(row[1]) + '/' + str(row[3]) + '/%(id)s-%(title)s.%(ext)s'
         ydl_opts = {
             'format': 'best',
             'outtmpl': outtmpl,
