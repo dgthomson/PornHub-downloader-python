@@ -73,6 +73,7 @@ python3 phdler.py delete playlist
 
 # Thanks to
 
+mariosemes/PornHub-downloader-python
 YouTube-DL <br />
 PrettyTables <br />
 BS4 aka BeautifulSoup4 <br />
