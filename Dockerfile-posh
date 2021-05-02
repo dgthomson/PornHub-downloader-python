@@ -1,26 +1,45 @@
-# syntax=docker/dockerfile:1
- FROM ubuntu:bionic
- RUN apt update && apt upgrade && apt install -y \
-     git \
-     nano \
-     python3 \
-     python3-pip \
-     wget \
-     curl \
-     unzip \
-     ffmpeg \
-     python3-lxml \
-  && pip3 install \
-     youtube-dl \
-     prettytable \
-     bs4 \
-     requests \
-     lxml \
-  && mkdir /phdl \
-  && mkdir /downloads \
-  && mkdir /db \
-  && git clone https://github.com/dgthomson/phdl /phdl \
-  && chmod +x /phdl/phdl.py \
-  && touch /etc/youtube-dl.conf
+FROM debian:stable-slim
+ENV LC_ALL=C.UTF-8 \
+    LANG=C.UTF-8 \
+    LANGUAGE=en_US:en
+SHELL ["/bin/bash", "-o", "pipefail", "-c"]
+RUN set -x && \
+    TEMP_PACKAGES=() && \
+    KEPT_PACKAGES=() && \
+  # Packages only required during build
+    TEMP_PACKAGES+=(git) && \
+    TEMP_PACKAGES+=(wget) && \
+    TEMP_PACKAGES+=(unzip) && \
+    TEMP_PACKAGES+=(python3-pip) && \
+    TEMP_PACKAGES+=(curl) && \
+  # Packages kept in the image
+    KEPT_PACKAGES+=(nano) && \
+    KEPT_PACKAGES+=(python3) && \
+    KEPT_PACKAGES+=(ffmpeg) && \
+    KEPT_PACKAGES+=(python3-lxml) && \
+  # Install packages
+    apt-get update -y && \
+    apt-get install -y --no-install-recommends \
+        ${KEPT_PACKAGES[@]} \
+        ${TEMP_PACKAGES[@]} && \
+  # Install Python packages
+    pip3 install \
+        youtube-dl \
+        prettytable \
+        bs4 \
+        requests \
+        lxml && \
+  # Install phdl
+    mkdir /phdl && \
+    mkdir /downloads && \
+    mkdir /db && \
+    git clone https://github.com/dgthomson/phdl /phdl && \
+    chmod +x /phdl/phdl.py && \
+    touch /etc/youtube-dl.conf && \
+  # Clean-up
+    apt-get remove -y ${TEMP_PACKAGES[@]} && \
+    apt-get autoremove -y && \
+    apt-get clean -y && \
+    rm -rf /var/lib/apt/lists/* /tmp/* /src && \
 WORKDIR /phdl
 CMD /bin/bash
