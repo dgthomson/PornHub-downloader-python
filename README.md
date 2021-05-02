@@ -1,3 +1,9 @@
+# Quick-start!
+
+Map /db to a local directory to hold the PHDL database.
+
+Map /downloads to a suitable directory to hold everything retrieved.
+
 # Usage
 ```bash
 
