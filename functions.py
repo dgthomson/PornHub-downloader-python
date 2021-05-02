@@ -361,7 +361,7 @@ def create_config(conn, item):
 def prepare_config():
     conn = create_connection(database)
 #   u_input = input("Please enter the FULL PATH to your download location: ")
-    u_input = "/download"
+    u_input = "/downloads"
     with conn:
         item = ('DownloadLocation', u_input)
         item_id = create_config(conn, item)
