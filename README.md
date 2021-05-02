@@ -4,7 +4,7 @@ Bind `/db` to a host directory to hold the PHDL database.
 
 Bind `/downloads` to a suitable host directory to hold everything retrieved.
 
-Can also bind `/etc/youtube-dl.conf` to a suitable host file to hold the youtube-dl configuration: example provided.
+Can also bind `/etc/youtube-dl.conf` to a suitable host file to hold the youtube-dl configuration: the example provided uses the `/downloads` directory above.
 
 # Usage
 ```bash
