@@ -1,7 +1,7 @@
 FROM ubuntu:slim
 ENV LC_ALL=C.UTF-8 \
     LANG=C.UTF-8 \
-    LANGUAGE=en_US:en
+    LANGUAGE=en_UK:en
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 RUN set -x && \
     TEMP_PACKAGES=() && \
