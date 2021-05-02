@@ -19,6 +19,7 @@
   && mkdir /phdl \
   && mkdir /downloads \
   && mkdir /db \
-  && git clone https://github.com/dgthomson/phdl /phdl
+  && git clone https://github.com/dgthomson/phdl /phdl \
+  && chmod +x /phdl/phdl.py
 WORKDIR /phdl
 CMD /bin/bash
