@@ -20,6 +20,7 @@
   && mkdir /downloads \
   && mkdir /db \
   && git clone https://github.com/dgthomson/phdl /phdl \
-  && chmod +x /phdl/phdl.py
+  && chmod +x /phdl/phdl.py \
+  && touch /etc/youtube-dl.conf
 WORKDIR /phdl
 CMD /bin/bash
