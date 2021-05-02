@@ -1,10 +1,10 @@
 # Quick-start!
 
-Map `/db` to a host directory to hold the PHDL database.
+Bind `/db` to a host directory to hold the PHDL database.
 
-Map `/downloads` to a suitable host directory to hold everything retrieved.
+Bind `/downloads` to a suitable host directory to hold everything retrieved.
 
-Can also map `/etc/youtube-dl.conf` to a suitable host file to hold the youtube-dl configuration.
+Can also bind `/etc/youtube-dl.conf` to a suitable host file to hold the youtube-dl configuration: example provided.
 
 # Usage
 ```bash
