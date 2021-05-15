@@ -12,7 +12,7 @@
      unzip \
      ffmpeg \
      bash \
-  && apk add --update --no-cache g++ gcc libxml2-dev libxslt-dev python-dev libffi-dev openssl-dev make \
+  && apk add --update --no-cache g++ gcc libxml2-dev libxslt-dev python3-dev libffi-dev openssl-dev make \
   && pip3 install -r requirements.txt \
   && pip3 install \
      youtube-dl \
