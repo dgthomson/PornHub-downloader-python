@@ -12,10 +12,8 @@
      unzip \
      ffmpeg \
      bash \
-  && apk add --no-cache --virtual .build-deps gcc libc-dev libxslt-dev \
-  && apk add --no-cache libxslt \
-  && pip3 install --no-cache-dir lxml>=3.5.0 \
-  && apk del .build-deps \
+  && apk add --update --no-cache g++ gcc libxml2-dev libxslt-dev python-dev libffi-dev openssl-dev make \
+  && pip3 install -r requirements.txt \
   && pip3 install \
      youtube-dl \
      prettytable \
