@@ -1,15 +1,17 @@
 # syntax=docker/dockerfile:1
  FROM alpine:3.12
- RUN apt update && apt upgrade && apt install -y \
+# Install required packages
+ RUN apk update && apk -U add --no-cache \
      git \
      nano \
      python3 \
-     python3-pip \
+     py3-pip \
      wget \
      curl \
      unzip \
      ffmpeg \
      python3-lxml \
+     bash \
   && pip3 install \
      youtube-dl \
      prettytable \
