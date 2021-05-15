@@ -1,0 +1,25 @@
+# syntax=docker/dockerfile:1
+# Some advice from https://stackoverflow.com/questions/35931579/how-can-i-install-lxml-in-docker
+ FROM alpine:3.12
+# Install required packages
+ RUN apk update && apk -U add --no-cache \
+     git \
+     nano \
+     python3 \
+     wget \
+     curl \
+     unzip \
+     ffmpeg \
+     bash \
+     youtube-dl \
+     py3-prettytable \
+     py3-beautifulsoup4 \
+     py3-requests \
+  && mkdir /phdl \
+  && mkdir /downloads \
+  && mkdir /db \
+  && git clone https://github.com/dgthomson/phdl /phdl \
+  && chmod +x /phdl/phdl.py \
+  && touch /etc/youtube-dl.conf
+WORKDIR /phdl
+CMD /bin/bash
