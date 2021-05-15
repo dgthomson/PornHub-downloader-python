@@ -1,5 +1,10 @@
 # syntax=docker/dockerfile:1
  FROM alpine:3.12
+# ...from https://stackoverflow.com/questions/35931579/how-can-i-install-lxml-in-docker
+ RUN apk add --no-cache --virtual .build-deps gcc libc-dev libxslt-dev && \
+     apk add --no-cache libxslt && \
+     pip install --no-cache-dir lxml>=3.5.0 && \
+     apk del .build-deps
 # Install required packages
  RUN apk update && apk -U add --no-cache \
      git \
@@ -10,14 +15,12 @@
      curl \
      unzip \
      ffmpeg \
-     python3-lxml \
      bash \
   && pip3 install \
      youtube-dl \
      prettytable \
      bs4 \
      requests \
-     lxml \
   && mkdir /phdl \
   && mkdir /downloads \
   && mkdir /db \
